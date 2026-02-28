@@ -1,0 +1,234 @@
+This is a high-stakes, highly structured analytical simulation for the DECODE X 2026 Finale. You are acting as an executive advisor tackling the "MOBILITY SHIFT" case for the Dubai RTA bus network.
+
+The documents outline a complex optimization problem that will evolve continuously over a 22-hour period. Here is the breakdown of what the case is telling you, how the competition works, and what your immediate priorities are.
+
+### 1. The Core Business Problem
+
+You are not just predicting passenger numbers; you are solving a **system efficiency and allocation optimization problem**.
+
+* **The Network:** You are analyzing 12 distinct routes (City, Express, Feeder, Intercity) and 60 stops across various zones (e.g., Downtown, Marina, Jebel Ali).
+* **The Challenge:** Between 2022 and mid-2025, the network experienced steady population growth, seasonal tourism spikes (winter uplifts and summer moderation), and intensifying road congestion.
+* **The Complexity:** Congestion is altering average bus speeds, effective capacity, and reliability. Stop-level demand changes based on the urban zone, the type of route, and whether it is a weekday or weekend.
+
+### 2. The Hackathon Structure (The "Simulation")
+
+This competition is designed to throw curveballs at you. You cannot just build one model and be done; you have to adapt to new rules as time goes on.
+
+* **Stage 1 (Baseline - Right Now):** You must frame the problem, analyze historical data (2022 to H1 2025), and build a baseline forecasting model.
+* **Stage 2 (Regime Shift - 7:00 PM Today):** The organizers will drop a "structural shock" on you. This could be a sudden policy change, a demand shift, or a budget constraint. You will have to reassess your models and submit a mandatory 5-slide "Interim Submission" by 11:00 PM detailing how the shock impacted your strategy.
+* **Stage 3 (Final Board Directive - 1:00 AM Tomorrow):** You will receive a final, binding constraint or revised financial objective.
+* **Final Submission (9:00 AM Tomorrow):** You must submit a 15-slide Executive Presentation, a 10-page Technical Appendix, and a One-Page Decision Memo.
+
+### 3. Your Immediate Mandate (Stage 1)
+
+By **7:00 PM today**, before the first "shock" hits, you are expected to have completed the following:
+
+* **Diagnose the past:** Analyze multi-year demand dynamics, pinpointing seasonality and weekday vs. weekend splits.
+* **Model the friction:** Understand how congestion interacts with demand and identify structural imbalances across different corridors.
+* **Forecast the future:** Predict daily route-level demand for July 1 to December 31, 2025.
+* **Propose solutions:** Identify which corridors are at risk of overloading, where capacity is being wasted, and suggest initial fleet reallocations or headway (timing) modifications.
+
+### 4. The Data Provided So Far
+
+You have the structural backbone of the network:
+
+* **`Bus_Routes.csv`:** Lists the 12 routes, their codes, start/end stops, lengths, average travel times, and service types.
+* **`Bus_Stops.csv`:** Maps 60 stops with their exact geographic coordinates, stop types (e.g., Terminal, Interchange), and zones.
+* **`Route_Stop_Mapping.csv`:** Shows the exact sequence of stops for each route and the specific dwell time (in minutes) a bus spends at each stop.
+
+**Crucial Data Warning:** You will be receiving (or already have) `Train_Ridership` and `Train_Traffic` datasets. The guidelines explicitly warn that you **must** merge these datasets accurately using `Route_ID`, `Stop_ID`, and `Date`. Doing this incorrectly will distort your analysis and ruin your forecasts.
+
+---
+
+**How would you like to begin?** I can help you write Python code to merge and explore the CSV files, brainstorm the structure of your initial diagnostic models, or draft the outline for your eventual executive presentation.
+
+
+```python
+import pandas as pd
+
+# Load the ridership and traffic datasets
+ridership_df = pd.read_csv('Train_Ridership_2022_to_2025H1.csv')
+traffic_df = pd.read_csv('Train_Traffic_2022_to_2025H1.csv')
+
+# Display info and head for Ridership
+print("--- Train Ridership Data ---")
+print(ridership_df.info())
+print("\nFirst 5 rows:")
+print(ridership_df.head())
+
+# Display info and head for Traffic
+print("\n--- Train Traffic Data ---")
+print(traffic_df.info())
+print("\nFirst 5 rows:")
+print(traffic_df.head())
+
+
+
+```
+
+```text
+--- Train Ridership Data ---
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 195381 entries, 0 to 195380
+Data columns (total 6 columns):
+ #   Column           Non-Null Count   Dtype 
+---  ------           --------------   ----- 
+ 0   Ridership_ID     195381 non-null  int64 
+ 1   Route_ID         195381 non-null  int64 
+ 2   Stop_ID          195381 non-null  int64 
+ 3   Date             195381 non-null  object
+ 4   Boarding_Count   195381 non-null  int64 
+ 5   Alighting_Count  195381 non-null  int64 
+dtypes: int64(5), object(1)
+memory usage: 8.9+ MB
+None
+
+First 5 rows:
+   Ridership_ID  Route_ID  Stop_ID        Date  Boarding_Count  Alighting_Count
+0             1       101       16  2022-01-01              33              145
+1             2       101       43  2022-01-01             134              100
+2             3       101       52  2022-01-01             112              100
+3             4       101       33  2022-01-01             223               45
+4             5       101       20  2022-01-01              33               33
+
+--- Train Traffic Data ---
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 1277 entries, 0 to 1276
+Data columns (total 3 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   Date              1277 non-null   object 
+ 1   Congestion_Level  1277 non-null   int64  
+ 2   Avg_Speed_kmph    1277 non-null   float64
+dtypes: float64(1), int64(1), object(1)
+memory usage: 30.1+ KB
+None
+
+First 5 rows:
+         Date  Congestion_Level  Avg_Speed_kmph
+0  2022-01-01                 2           37.75
+1  2022-01-02                 1           41.22
+2  2022-01-03                 4           25.64
+3  2022-01-04                 4           24.67
+4  2022-01-05                 3           32.47
+
+
+```
+
+Excellent, you have all the essential datasets now. I have just loaded and inspected the two new files, and they give us the dynamic, day-to-day metrics we need to solve the Stage 1 Mandate .
+
+Here is what the newly attached datasets contain:
+
+### 1. `Train_Ridership_2022_to_2025H1.csv` (195,381 rows)
+
+This dataset tracks the passenger movement for every stop and route on every single day .
+
+* **Keys:** `Route_ID`, `Stop_ID`, `Date`
+* **Metrics:** `Boarding_Count`, `Alighting_Count`
+* 
+**Next Immediate Step:** The Stage 1 guidelines explicitly recommend creating a derived metric here: **`Total_Pax = Boarding_Count + Alighting_Count`**.
+
+
+
+### 2. `Train_Traffic_2022_to_2025H1.csv` (1,277 rows)
+
+This dataset represents the daily network-wide friction for all 1,277 days from January 1, 2022, to mid-2025 .
+
+* **Key:** `Date`
+* **Metrics:** `Congestion_Level` (Ordinal rating 1 to 4+), `Avg_Speed_kmph`
+
+---
+
+### The "Trick" - Merging Warning
+
+The case explicitly warns that *"Incorrect relational merging may materially distort corridor analysis"* and states that datasets must be merged using `Route_ID`, `Stop_ID`, and `Date` .
+
+To build your Stage 1 analysis by the 7:00 PM deadline, we need to bring all five files together into one "Master Analytical Dataset". Here is the strategy I propose we execute using Python:
+
+1. 
+**Calculate Total Pax:** Add the `Total_Pax` column to the Ridership dataset.
+
+
+2. 
+**Bring in Stop Details:** Merge `Bus_Stops` into the Ridership data (on `Stop_ID`) to get the Zone, Stop Type, and Coordinates.
+
+
+3. 
+**Bring in Route Details:** Merge `Bus_Routes` into the dataset (on `Route_ID`) to attach Route Type (City, Express, Feeder, Intercity) .
+
+
+4. 
+**Bring in Sequence & Dwell Time:** Merge `Route_Stop_Mapping` to map the sequence of stops.
+
+
+5. 
+**Factor in Congestion:** Merge `Train_Traffic` into the massive combined table (on `Date`).
+
+
+
+Once merged, we can immediately begin outputting the metrics expected from you by 7:00 PM :
+
+* 
+**Growth decomposition & Seasonal insight:** Visualizing total pax over time and breaking it down by Winter (Nov-Mar) vs. Summer (Jun-Aug).
+
+
+* 
+**Route-type comparison:** Finding structural imbalances between City, Express, and Feeder routes.
+
+
+* 
+**Congestion elasticity:** Checking how `Congestion_Level` affects passenger load distribution .
+
+
+* 
+**Baseline forecast:** Extrapolating to predict H2 2025 demand.
+
+
+
+**Would you like me to write and execute the Python code to perform this massive master merge right now and generate the initial insights (e.g., total volume over the years or the impact of seasonality)?**
+
+The absolute first thing we must do is **Data Integration and Target Variable Creation**.
+
+Before we can run any growth decomposition, detect seasonality, or train a forecasting model, we have to build a unified, error-free master dataset.
+
+Here is why this is critical right out of the gate: the case explicitly warns that "incorrect relational merging may materially distort corridor analysis". With hundreds of thousands of rows spanning ridership and traffic, a bad join will silently ruin every insight we generate for the 7:00 PM deadline.
+
+Here is the immediate step-by-step game plan for our data pipeline:
+
+### 1. Create the Target Metric
+
+The mandate recommends a specific derived metric for our analysis. We need to calculate this immediately in the `Train_Ridership` dataset:
+
+* 
+`Total_Pax = Boarding_Count + Alighting_Count` 
+
+
+
+### 2. The Master Merge
+
+We need to stitch all five CSVs together to create a single analytical view. The structural datasets (`Bus_Routes`, `Bus_Stops`, `Route_Stop_Mapping`) give us the "where" and "what," but the dynamic datasets (`Train_Ridership`, `Train_Traffic`) give us the "when" and "how much."
+
+We must merge them carefully using the explicit keys provided by the board:
+
+* 
+**`Route_ID`** 
+
+
+* 
+**`Stop_ID`** 
+
+
+* 
+**`Date`** 
+
+
+
+### 3. The Integrity Check
+
+Once merged, we must perform a sanity check. We need to look for data loss (e.g., did merging the traffic data drop weekend ridership?) and verify that our `Congestion_Level` correctly maps to the specific dates for our routes.
+
+---
+
+Since we are dealing with a heavily relational structure, doing this efficiently in Pandas is our best move to secure a clean foundation.
+
+Would you like me to write out the precise Python/Pandas script to execute this master merge and calculate the `Total_Pax` metric so we can lock in our baseline dataset?

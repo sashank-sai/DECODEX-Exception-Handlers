@@ -1,0 +1,27 @@
+# ==========================================
+# DECODE X 2026 — .gitignore
+# ==========================================
+
+# === Large data files (provided by organizers, not our code) ===
+data/raw/*.csv
+data/shock/*.csv
+data/generated/*.csv
+
+# === Temporary/scratch files ===
+*.pyc
+__pycache__/
+*.tmp
+test_dates.py
+fix_chart*.py
+
+# === IDE & system files ===
+.gemini/
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# === Zip files ===
+*.zip

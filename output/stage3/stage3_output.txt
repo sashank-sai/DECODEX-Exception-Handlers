@@ -1,0 +1,262 @@
+======================================================================
+STAGE 3: STRATEGIC ACCOUNTABILITY & STABILIZED REGIME EVALUATION
+======================================================================
+
+  Data loaded:
+    Q4 Ridership: 14,076 rows, 92 days
+    Q4 Traffic:   92 rows
+    Q4 Total Pax: 3,144,148
+
+======================================================================
+SECTION A: FORECAST PERFORMANCE AUDIT
+======================================================================
+
+  A1. STAGE 1 FORECAST vs Q3 ACTUAL (Jul-Sep 2025)
+    Overall: Forecast=2,501,239, Actual=2,904,071, Error=-13.9%
+    Route-level MAPE: 17.9%
+
+    Route    Type           Forecast     Actual     APE     Bias Verdict
+    ----------------------------------------------------------------------
+    X66      Express        188,070   284,638   33.9%   -33.9% UNDER-forecast
+    X11      Express        207,280   309,414   33.0%   -33.0% UNDER-forecast
+    X28      Express        208,600   306,846   32.0%   -32.0% UNDER-forecast
+    F18      Feeder         220,832   171,906   28.5%   +28.5% OVER-forecast
+    C04      City           211,125   254,360   17.0%   -17.0% UNDER-forecast
+    C03      City           263,126   309,292   14.9%   -14.9% UNDER-forecast
+    C01      City           263,541   305,634   13.8%   -13.8% UNDER-forecast
+    C02      City           223,710   259,248   13.7%   -13.7% UNDER-forecast
+    F12      Feeder         190,827   173,889    9.7%    +9.7% OVER-forecast
+    F25      Feeder         203,777   190,006    7.2%    +7.2% OVER-forecast
+    E16      Intercity      146,338   155,712    6.0%    -6.0% UNDER-forecast
+    E22      Intercity      174,013   183,126    5.0%    -5.0% Accurate
+
+  A2. STAGE 2 FORECAST vs Q4 ACTUAL (Oct-Dec 2025)
+    Overall: Forecast=3,366,963, Actual=3,144,148, Error=+7.1%
+    Route-level MAPE: 8.1%
+
+    Route    Type           Forecast     Actual     APE     Bias Verdict
+    ----------------------------------------------------------------------
+    F25      Feeder         233,688   197,522   18.3%   +18.3% OVER-forecast
+    F12      Feeder         219,201   189,369   15.8%   +15.8% OVER-forecast
+    X11      Express        342,668   305,663   12.1%   +12.1% OVER-forecast
+    X66      Express        314,256   280,427   12.1%   +12.1% OVER-forecast
+    X28      Express        336,538   305,065   10.3%   +10.3% OVER-forecast
+    F18      Feeder         218,135   197,912   10.2%   +10.2% OVER-forecast
+    E16      Intercity      181,994   173,147    5.1%    +5.1% OVER-forecast
+    C04      City           294,420   281,907    4.4%    +4.4% Accurate
+    E22      Intercity      214,144   207,552    3.2%    +3.2% Accurate
+    C01      City           356,607   348,918    2.2%    +2.2% Accurate
+    C02      City           296,983   302,572    1.8%    -1.8% Accurate
+    C03      City           358,329   354,094    1.2%    +1.2% Accurate
+
+  A3. STAGE 1 (UNADJUSTED) vs Q4 ACTUAL — Did recalibration help?
+    Stage 1 (unadjusted) MAPE: 14.6%  |  Overall error: -4.6%
+    Stage 2 (recalibrated) MAPE: 8.1%  |  Overall error: +7.1%
+    Recalibration IMPROVED MAPE by 6.5pp
+
+  A4. ROUTE-TYPE AGGREGATED ERROR
+    City         Stage1 MAPE= 14.9%, Bias= -14.9%  |  Stage2 MAPE=  2.4%, Bias=  +1.5%
+    Express      Stage1 MAPE= 33.0%, Bias= -33.0%  |  Stage2 MAPE= 11.5%, Bias= +11.5%
+    Feeder       Stage1 MAPE= 15.1%, Bias= +15.1%  |  Stage2 MAPE= 14.8%, Bias= +14.8%
+    Intercity    Stage1 MAPE=  5.5%, Bias=  -5.5%  |  Stage2 MAPE=  4.1%, Bias=  +4.1%
+
+  A5. DIRECTIONAL BIAS ANALYSIS
+    Stage 1 → Q3: 8 under-forecasts, 3 over-forecasts (systematic under-estimation)
+    Stage 2 → Q4: 0 under-forecasts, 7 over-forecasts
+    ⚠️  Stage 2 OVERREACTED — over-corrected for metro shock (demand partially reverted)
+
+  A6. VARIANCE MISESTIMATION
+    Q3 daily std:           3,934
+    Q4 actual daily std:    3,941
+    S2 forecast std:        4,478
+    Variance ratio (forecast/actual): 1.14
+    ✓  Variance estimation was reasonable
+
+  A7. STRUCTURAL PERMANENCE CLASSIFICATION
+
+    Route      Q3 Dev   Q4 Dev  Persistence Classification
+    ------------------------------------------------------------
+    C01        +13.8%    -2.2%          16% PARTIAL REVERSION
+    C02        +13.7%    +1.8%          13% PARTIAL REVERSION
+    C03        +14.9%    -1.2%           8% PARTIAL REVERSION
+    C04        +17.0%    -4.4%          26% PARTIAL REVERSION
+    E16         +6.0%    -5.1%          85% PERMANENT SHIFT
+    E22         +5.0%    -3.2%          N/A Stable
+    F12         -9.7%   -15.8%         162% PERMANENT SHIFT
+    F18        -28.5%   -10.2%          36% PARTIAL REVERSION
+    F25         -7.2%   -18.3%         253% PERMANENT SHIFT
+    X11        +33.0%   -12.1%          37% PARTIAL REVERSION
+    X28        +32.0%   -10.3%          32% PARTIAL REVERSION
+    X66        +33.9%   -12.1%          36% PARTIAL REVERSION
+
+======================================================================
+SECTION B: STRATEGIC ALIGNMENT EVALUATION
+======================================================================
+
+  B1. FLEET REALLOCATION vs Q4 ACTUAL DEMAND
+
+    Route    Type       Fleet  AvgDaily   PaxBus  Headway Alignment
+    -----------------------------------------------------------------
+    C04      City          4    3,064     766    35.0m UNDER-served
+    F12      Feeder        3    2,058     686    43.9m UNDER-served
+    C01      City          7    3,793     542    16.6m UNDER-served
+    X11      Express       7    3,322     475    12.2m Adequate
+    E16      Intercity     4    1,882     471    30.8m Adequate
+    C02      City          7    3,289     470    14.3m Adequate
+    F18      Feeder        5    2,151     430    28.6m Adequate
+    X66      Express       8    3,048     381    17.9m Adequate
+    C03      City         11    3,849     350    10.4m Well-served
+    E22      Intercity     7    2,256     322    15.2m Well-served
+    F25      Feeder        7    2,147     307    18.9m Well-served
+    X28      Express      11    3,316     301    11.3m Well-served
+
+  B2. ADJUSTMENT ASSESSMENT
+
+    Route     Q3 Daily  Q4 Daily    Q3→Q4  S2 Adjust Assessment
+    -----------------------------------------------------------------
+    C01         3,322    3,793   +14.2%      +2.2% WELL CALIBRATED
+    C02         2,818    3,289   +16.7%      -1.8% WELL CALIBRATED
+    C03         3,362    3,849   +14.5%      +1.2% WELL CALIBRATED
+    C04         2,765    3,064   +10.8%      +4.4% WELL CALIBRATED
+    E16         1,693    1,882   +11.2%      +5.1% OVER-adjusted
+    E22         1,990    2,256   +13.3%      +3.2% WELL CALIBRATED
+    F12         1,890    2,058    +8.9%     +15.8% OVER-adjusted
+    F18         1,869    2,151   +15.1%     +10.2% OVER-adjusted
+    F25         2,065    2,147    +4.0%     +18.3% OVER-adjusted
+    X11         3,363    3,322    -1.2%     +12.1% OVER-adjusted
+    X28         3,335    3,316    -0.6%     +10.3% OVER-adjusted
+    X66         3,094    3,048    -1.5%     +12.1% OVER-adjusted
+
+  B3. ELASTICITY PERSISTENCE CHECK
+    H1 2025 elasticity:     +720 pax per congestion level
+    Q3 2025 elasticity:   +1,447 pax per congestion level (shock)
+    Q4 2025 elasticity:     +940 pax per congestion level (stabilized)
+    Q3→Q4 change: -35.0%
+    ⚠️ Elasticity DECAYED — assumptions need revision
+
+======================================================================
+SECTION C: ELASTICITY & SUBSTITUTION DIAGNOSIS
+======================================================================
+
+  C1. METRO SUBSTITUTION ELASTICITY
+
+    Type           H1 2025  Q3 (Shock)  Q4 (Stable)    H1→Q3    Q3→Q4    H1→Q4
+    ----------------------------------------------------------------------
+    City           12,008     12,267      13,994    +2.2%   +14.1%   +16.5%
+    Express         7,542      9,792       9,686   +29.8%    -1.1%   +28.4%
+    Feeder          7,609      5,824       6,357   -23.5%    +9.1%   -16.5%
+    Intercity       4,013      3,683       4,138    -8.2%   +12.4%    +3.1%
+
+  C2. CONGESTION ELASTICITY PERSISTENCE
+    Period           Congestion      Speed   Elasticity
+    --------------------------------------------------
+    H1 2025               2.78      31.1        +720
+    Q3 2025 (shock)       3.09      29.2      +1,447
+    Q4 2025 (stable)       2.83      31.0        +940
+
+  C3. ROUTE-TYPE STRUCTURAL REBALANCING
+
+    Type          H1 Share  Q3 Share  Q4 Share Trend
+    --------------------------------------------------
+    City             38.5%     38.9%     40.9% Still growing ▲
+    Express          24.2%     31.0%     28.3% Reverting ▼
+    Feeder           24.4%     18.4%     18.6% Stabilized —
+    Intercity        12.9%     11.7%     12.1% Stabilized —
+
+======================================================================
+SECTION D: 2026 FORWARD STRATEGY
+======================================================================
+
+  D1. FEEDER REDESIGN
+    F12: H1=2,368→Q3=1,890→Q4=2,058 (H1→Q4: -13.1%, Q3→Q4: +8.9%)
+          → OPTIMIZE — reduce fleet, adjust schedule
+    F18: H1=2,717→Q3=1,869→Q4=2,151 (H1→Q4: -20.8%, Q3→Q4: +15.1%)
+          → RESTRUCTURE — reduce frequency, extend to metro station
+    F25: H1=2,524→Q3=2,065→Q4=2,147 (H1→Q4: -14.9%, Q3→Q4: +4.0%)
+          → OPTIMIZE — reduce fleet, adjust schedule
+
+  D2. EXPRESS CAPACITY CALIBRATION
+    X11: Q4 avg=3,322/day, fleet=7, pax/bus=475
+          Q3→Q4 change: -1.2% — Demand moderated
+          → Current allocation adequate for stabilized demand
+    X28: Q4 avg=3,316/day, fleet=11, pax/bus=301
+          Q3→Q4 change: -0.6% — Demand moderated
+          → Current allocation adequate for stabilized demand
+    X66: Q4 avg=3,048/day, fleet=8, pax/bus=381
+          Q3→Q4 change: -1.5% — Demand moderated
+          → Current allocation adequate for stabilized demand
+
+  D3. CBD RATIONALIZATION FRAMEWORK
+    C01: H1→Q4=+15.1%, fleet=7, Q4 daily=3,793
+    C02: H1→Q4=+17.5%, fleet=7, Q4 daily=3,289
+    C03: H1→Q4=+17.5%, fleet=11, Q4 daily=3,849
+    C04: H1→Q4=+16.1%, fleet=4, Q4 daily=3,064
+
+  D4. VOLATILITY BUFFER MECHANISM
+
+    Route      Q3 CV   Q4 CV   Change Stability
+    ----------------------------------------
+    C01       0.120  0.116    -3.5% Stable
+    C02       0.145  0.153    +5.0% Moderate
+    C03       0.113  0.108    -4.2% Stable
+    C04       0.114  0.105    -8.3% Stable
+    E16       0.176  0.165    -6.3% Moderate
+    E22       0.157  0.141   -10.4% Stable
+    F12       0.139  0.141    +1.0% Stable
+    F18       0.134  0.141    +5.5% Stable
+    F25       0.172  0.156    -9.1% Moderate
+    X11       0.135  0.123    -9.1% Stable
+    X28       0.147  0.125   -15.4% Stable
+    X66       0.144  0.133    -7.8% Stable
+
+    Volatile routes (CV > 0.20): None
+    Recommendation: Standard 2-bus reserve sufficient
+
+  D5. PASSENGER REDISTRIBUTION (H1 → Q4 — Full Stabilized Impact)
+    H1 daily avg:     31,172
+    Q4 daily avg:     34,176
+    Net change:       +3,003 (+9.6%)
+
+  D6. EFFICIENCY GAIN (2026 Projection)
+    Route     H1 Pax/km  Q4 Pax/km   Change
+    ----------------------------------------
+    C01          158.8     182.9   +15.1%
+    C02          154.8     181.8   +17.5%
+    C03          224.8     264.2   +17.5%
+    C04           76.7      89.1   +16.1%
+    E16           83.1      85.2    +2.6%
+    E22          167.4     173.4    +3.6%
+    F12           87.6      76.2   -13.1%
+    F18          150.1     118.9   -20.8%
+    F25          181.7     154.6   -14.9%
+    X11          112.8     143.3   +27.1%
+    X28          207.3     265.7   +28.2%
+    X66          123.0     160.3   +30.2%
+
+======================================================================
+EXECUTIVE SUMMARY: STAGE 3 ACCOUNTABILITY AUDIT
+======================================================================
+
+  FORECAST PERFORMANCE:
+    Stage 1 → Q3: MAPE = 17.9%, Overall error = -13.9%
+    Stage 2 → Q4: MAPE = 8.1%, Overall error = +7.1%
+    Stage 1 (unadj) → Q4: MAPE = 14.6%
+    Recalibration improved MAPE by 6.5pp
+
+  DEMAND TRAJECTORY:
+    H1:   31,172/day → Q3:   31,566/day → Q4:   34,176/day
+    Network entered REDISTRIBUTED EQUILIBRIUM (not full reversion)
+
+  CONGESTION:
+    H1: 2.78 → Q3: 3.09 (shock) → Q4: 2.83 (stabilized)
+    Speed: 31.1 → 29.2 → 31.0 km/h
+
+  KEY FINDING:
+    The metro shock partially reverted but did NOT return to baseline.
+    The new equilibrium sits BETWEEN the pre-shock and peak-shock levels.
+    Express demand moderated but remains structurally elevated.
+    Feeder contraction stabilized — floor found.
+
+======================================================================
+[DONE] STAGE 3 ANALYSIS COMPLETE
+======================================================================

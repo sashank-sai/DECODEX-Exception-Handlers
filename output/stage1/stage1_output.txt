@@ -1,0 +1,139 @@
+============================================================
+STEP 1: Loading all datasets...
+============================================================
+  Routes:          (12, 7)
+  Stops:           (60, 6)
+  Route-Stop Map:  (153, 5)
+  Ridership:       (195381, 6)
+  Traffic:         (1277, 3)
+
+============================================================
+STEP 2: Creating Total_Pax metric...
+============================================================
+  Total_Pax range: 0 to 513
+  Total_Pax mean:  171.2
+  Date range:      2022-01-01 to 2025-06-30
+
+============================================================
+STEP 3: Master Merge (5 datasets -> 1 analytical table)...
+============================================================
+  After Stop merge:    195381 rows (lost 0)
+  After Route merge:   195381 rows (lost 0)
+  After Mapping merge: 195381 rows (lost 0)
+  After Traffic merge: 195381 rows (lost 0)
+
+============================================================
+STEP 4: Integrity Checks...
+============================================================
+  Final master rows:     195381
+  Original ridership:    195381
+  Row difference:        0
+  Null counts per column:
+    [OK] No null values found!
+
+  Unique Routes:  12
+  Unique Stops:   56
+  Unique Dates:   1277
+  Route Types:    ['City', 'Express', 'Feeder', 'Intercity']
+  Zones:          ['Coastal_Marina', 'CBD_Downtown', 'Core_Deira', 'CBD_BusinessBay', 'Res_AlQusais', 'Ind_JebelAli', 'Res_InternationalCity']
+  Stop Types:     ['Regular', 'Interchange', 'Metro_Link', 'Terminal']
+
+============================================================
+STEP 5: Feature Engineering...
+============================================================
+  Added: Year, Month, DayOfWeek, IsWeekend, Quarter, Season, YearMonth
+  Weekend definition: Friday + Saturday (Dubai standard)
+  Seasons: Winter_Peak (Nov-Mar), Summer_Moderate (Jun-Aug), Shoulder (Apr-May, Sep-Oct)
+
+============================================================
+STEP 6: Initial Diagnostic Metrics
+============================================================
+
+--- 6a. Yearly Total Pax Growth ---
+  2022: Total=8,359,137  Avg=149.7  Records=55,845.0
+  2023: Total=9,127,080  Avg=163.4  Records=55,845.0
+  2024: Total=10,322,553  Avg=184.3  Records=55,998.0
+  2025: Total=5,642,137  Avg=203.7  Records=27,693.0
+  2022->2023 growth: +9.2%
+  2023->2024 growth: +13.1%
+  2024->2025 growth: -45.3%
+
+--- 6b. Seasonal Demand Patterns ---
+  Shoulder            : Total=  10,884,726  Avg=166.6
+  Summer_Moderate     : Total=   6,793,681  Avg=145.1
+  Winter_Peak         : Total=  15,772,500  Avg=189.5
+
+--- 6c. Weekday vs Weekend ---
+  Weekday   : Total=  24,360,444  Avg=174.6
+  Weekend   : Total=   9,090,463  Avg=162.8
+
+--- 6d. Route Type Analysis ---
+  City        : Total=  12,888,402  Avg=183.5
+  Feeder      : Total=   8,211,807  Avg=153.1
+  Express     : Total=   8,063,210  Avg=197.3
+  Intercity   : Total=   4,287,488  Avg=139.9
+
+--- 6e. Zone-Level Demand ---
+  CBD_Downtown                  : Total=   8,716,865  Avg=158.7
+  Res_AlQusais                  : Total=   4,799,695  Avg=170.8
+  Core_Deira                    : Total=   4,637,778  Avg=181.6
+  Res_InternationalCity         : Total=   4,387,409  Avg=171.8
+  Coastal_Marina                : Total=   4,328,365  Avg=199.4
+  CBD_BusinessBay               : Total=   3,368,660  Avg=175.9
+  Ind_JebelAli                  : Total=   3,212,135  Avg=157.2
+
+--- 6f. Congestion Level Impact on Ridership ---
+  Level 1: Pax_Avg=160.4  Speed=40.0 km/h  Board=82.4  Alight=78.0
+  Level 2: Pax_Avg=166.9  Speed=35.0 km/h  Board=85.6  Alight=81.3
+  Level 3: Pax_Avg=177.2  Speed=29.9 km/h  Board=90.9  Alight=86.3
+  Level 4: Pax_Avg=172.8  Speed=24.2 km/h  Board=88.4  Alight=84.3
+  Level 5: Pax_Avg=193.2  Speed=20.9 km/h  Board=98.9  Alight=94.2
+
+--- 6g. Top 10 Busiest Stops ---
+  Stop 52 (Regular     |Coastal_Marina           ):  1,263,573 pax
+  Stop 20 (Metro_Link  |CBD_Downtown             ):  1,257,052 pax
+  Stop 33 (Interchange |Coastal_Marina           ):  1,043,103 pax
+  Stop  8 (Regular     |CBD_Downtown             ):  1,015,840 pax
+  Stop  6 (Regular     |CBD_Downtown             ):  1,005,542 pax
+  Stop 16 (Regular     |Coastal_Marina           ):  1,001,410 pax
+  Stop 41 (Regular     |CBD_Downtown             ):    970,550 pax
+  Stop 21 (Interchange |CBD_Downtown             ):    928,816 pax
+  Stop  5 (Regular     |CBD_BusinessBay          ):    890,664 pax
+  Stop  7 (Regular     |CBD_Downtown             ):    889,851 pax
+
+--- 6h. Top 10 Busiest Routes ---
+  Route C03 (City      ):    3,529,919 pax
+  Route C01 (City      ):    3,527,272 pax
+  Route C02 (City      ):    2,986,996 pax
+  Route F18 (Feeder    ):    2,944,980 pax
+  Route C04 (City      ):    2,844,215 pax
+  Route X28 (Express   ):    2,775,175 pax
+  Route X11 (Express   ):    2,766,957 pax
+  Route F25 (Feeder    ):    2,710,568 pax
+  Route F12 (Feeder    ):    2,556,259 pax
+  Route X66 (Express   ):    2,521,078 pax
+
+--- 6i. Monthly Demand Trend (last 12 months of data) ---
+  2024-07:    752,310
+  2024-08:    746,822
+  2024-09:    821,780
+  2024-10:    860,165
+  2024-11:    921,780
+  2024-12:  1,013,156
+  2025-01:  1,073,619
+  2025-02:    937,792
+  2025-03:  1,000,190
+  2025-04:    906,191
+  2025-05:    931,842
+  2025-06:    792,503
+
+============================================================
+STEP 7: Saving master dataset...
+============================================================
+  Saved to: c:\Users\asus\Desktop\decodex\master_analytical_dataset.csv
+  Shape: (195381, 27)
+  Columns: ['Ridership_ID', 'Route_ID', 'Stop_ID', 'Date', 'Boarding_Count', 'Alighting_Count', 'Total_Pax', 'Stop_Name', 'Latitude', 'Longitude', 'Stop_Type', 'Zone', 'Route_Code', 'Route_Length_km', 'Avg_Travel_Time_Min', 'Route_Type', 'Stop_Sequence', 'Dwell_Time_Min', 'Congestion_Level', 'Avg_Speed_kmph', 'Year', 'Month', 'DayOfWeek', 'IsWeekend', 'Quarter', 'Season', 'YearMonth']
+
+============================================================
+[DONE] STAGE 1 DATA PIPELINE COMPLETE
+============================================================

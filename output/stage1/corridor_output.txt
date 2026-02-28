@@ -1,0 +1,372 @@
+======================================================================
+CORRIDOR OVERLOAD & CAPACITY WASTE ANALYSIS
+======================================================================
+  Master: 195,381 rows | Forecast: 2,208 rows
+
+======================================================================
+SECTION A: ROUTE EFFICIENCY SCORECARD
+======================================================================
+
+Route    Type          Avg_Pax   Pax/km  Pax/Stop     CV  Speed  Stops   B/A
+---------------------------------------------------------------------------
+  X11    Express          238    10.3     21.6  0.27  36.8    11  1.04
+  X28    Express          235    18.8     21.4  0.26  13.1    11  1.07
+  X66    Express          234    12.3     23.4  0.27  17.1    10  1.05
+  C04    City             220     6.4     18.3  0.28  31.8    12  1.04
+  C01    City             220    10.6     14.6  0.28  23.4    15  1.06
+  C03    City             218    15.0     14.6  0.28  16.7    15  1.06
+  C02    City             215    11.9     16.6  0.28  24.2    13  1.05
+  F12    Feeder           182     6.7     14.0  0.29  26.7    13  1.04
+  F18    Feeder           181    10.0     12.1  0.31  16.4    15  1.07
+  F25    Feeder           180    13.0     12.9  0.31  13.6    14  1.06
+  E22    Intercity        168    12.9     12.9  0.30  16.2    13  1.05
+  E16    Intercity        167     7.6     15.2  0.32  23.4    11  1.05
+
+======================================================================
+SECTION B: OVERLOADED CORRIDORS (DEMAND > CAPACITY)
+======================================================================
+
+  Pax/km threshold (P75): 12.9
+
+  OVERLOAD RISK RANKING (Higher = More at Risk)
+  Route    Type           Risk   Pax/km  Pax/Stp   Growth  Fcast_Avg
+  -----------------------------------------------------------------
+  X28      Express       89.2    18.8    21.4   +8.0%     2,485 <<<
+  X11      Express       67.7    10.3    21.6   +8.4%     2,486 !!
+  X66      Express       60.4    12.3    23.4   +7.2%     2,255 !!
+  C02      City          52.8    11.9    16.6   +7.9%     2,658 !!
+  E22      Intercity     47.7    12.9    12.9   +8.0%     2,080
+  C03      City          43.1    15.0    14.6   +7.0%     3,151
+  F25      Feeder        41.7    13.0    12.9   +7.6%     2,422
+  C01      City          38.1    10.6    14.6   +7.6%     3,163
+  C04      City          25.9     6.4    18.3   +7.1%     2,534
+  F12      Feeder        24.9     6.7    14.0   +7.7%     2,284
+  E16      Intercity     24.7     7.6    15.2   +7.3%     1,754
+  F18      Feeder        11.6    10.0    12.1   +6.5%     2,622
+
+======================================================================
+SECTION C: UNDERUTILIZED CAPACITY (WASTE)
+======================================================================
+
+  CAPACITY WASTE RANKING (Higher = More Underutilized)
+  Route    Type          Waste   Pax/km   Length  Stops  Avg_Pax
+  ------------------------------------------------------------
+  F18      Feeder        88.4    10.0    18.1    15     181 <<<
+  E16      Intercity     75.3     7.6    22.1    11     167 <<<
+  F12      Feeder        75.1     6.7    27.0    13     182 <<<
+  C04      City          74.1     6.4    34.4    12     220 <<<
+  C01      City          61.9    10.6    20.7    15     220 !!
+  F25      Feeder        58.3    13.0    13.9    14     180 !!
+  C03      City          56.9    15.0    14.6    15     218 !!
+  E22      Intercity     52.3    12.9    13.0    13     168 !!
+  C02      City          47.2    11.9    18.1    13     215
+  X66      Express       39.6    12.3    19.0    10     234
+  X11      Express       32.3    10.3    23.2    11     238
+  X28      Express       10.8    18.8    12.5    11     235
+
+======================================================================
+SECTION D: STOP-LEVEL BOTTLENECKS
+======================================================================
+
+  TOP 20 BOTTLENECK STOPS (Disproportionate Load)
+  Stop     Route  Zone                      Type          Share  Ratio  Avg_Pax  Pax/DwMin Flow          
+  ----------------------------------------------------------------------------------------------------
+  33       X66    Coastal_Marina            Interchange   11.2%  1.12x     261       179 BALANCED      
+  52       C04    Coastal_Marina            Regular        9.2%  1.10x     242       142 BALANCED      
+  33       C01    Coastal_Marina            Interchange    7.3%  1.10x     241       159 BALANCED      
+  31       C04    Coastal_Marina            Terminal       9.1%  1.09x     241       326 BALANCED      
+  52       C03    Coastal_Marina            Regular        7.3%  1.09x     239       124 BALANCED      
+  33       C04    Coastal_Marina            Interchange    9.1%  1.09x     240       127 BALANCED      
+  43       C01    Coastal_Marina            Regular        7.3%  1.09x     239       323 BALANCED      
+  16       F18    Coastal_Marina            Regular        7.2%  1.09x     197       207 BALANCED      
+  43       C03    Coastal_Marina            Regular        7.2%  1.09x     237       201 BALANCED      
+  33       C03    Coastal_Marina            Interchange    7.2%  1.08x     236       131 BALANCED      
+  16       C01    Coastal_Marina            Regular        7.2%  1.08x     238       136 BALANCED      
+  52       F12    Coastal_Marina            Regular        8.3%  1.08x     197       115 BALANCED      
+  16       X28    Coastal_Marina            Regular        9.8%  1.08x     254       200 BALANCED      
+  52       X11    Coastal_Marina            Regular        9.8%  1.08x     256       196 BALANCED      
+  52       C01    Coastal_Marina            Regular        7.2%  1.07x     236       229 BALANCED      
+  16       C04    Coastal_Marina            Regular        8.9%  1.07x     235       273 BALANCED      
+  31       C03    Coastal_Marina            Terminal       7.0%  1.06x     231       256 BALANCED      
+  57       F25    Res_AlQusais              Regular        7.5%  1.05x     189       126 BALANCED      
+  12       E16    Res_InternationalCity     Terminal       9.5%  1.05x     175       194 BALANCED      
+  13       F25    Res_AlQusais              Regular        7.4%  1.04x     187       193 BALANCED      
+
+======================================================================
+SECTION E: ZONE CORRIDOR PRESSURE MATRIX
+======================================================================
+
+  Zone                              Total_Pax  Avg_Pax  Cong  Speed   Net_Flow Role          Stops
+  -----------------------------------------------------------------------------------------------
+  CBD_Downtown                     1,471,741     189  2.8  31.1   +42,239 GENERATOR       10
+  Res_AlQusais                       813,433     204  2.8  31.1   +20,721 GENERATOR        8
+  Core_Deira                         784,981     217  2.8  31.1   +22,713 GENERATOR       10
+  Res_InternationalCity              740,621     205  2.8  31.1   +17,469 GENERATOR        9
+  Coastal_Marina                     727,370     236  2.8  31.1   +18,164 GENERATOR        5
+  CBD_BusinessBay                    565,637     208  2.8  31.1   +16,955 GENERATOR        8
+  Ind_JebelAli                       538,354     186  2.8  31.1    +9,172 GENERATOR        6
+
+======================================================================
+SECTION F: DAY-OF-WEEK DEMAND PATTERNS (H1 2025)
+======================================================================
+
+  Peak Day by Route (Index: 100 = route average)
+  Route    Type         Peak_Day      Peak_Demand   Index
+  -------------------------------------------------------
+  C01      City         Wednesday            238  108.3
+  C02      City         Wednesday            236  109.6
+  C03      City         Wednesday            231  106.0
+  C04      City         Friday               234  106.5
+  E16      Intercity    Wednesday            185  110.7
+  E22      Intercity    Wednesday            184  109.8
+  F12      Feeder       Thursday             198  108.4
+  F18      Feeder       Tuesday              196  108.0
+  F25      Feeder       Friday               198  109.7
+  X11      Express      Monday               255  107.4
+  X28      Express      Friday               255  108.5
+  X66      Express      Thursday             260  111.1
+
+  Weekend/Weekday Ratio by Route
+  Route    Type          Weekday_Avg  Weekend_Avg   Ratio
+  -------------------------------------------------------
+  C01      City                 223         210   0.94
+  C02      City                 220         205   0.93
+  C03      City                 222         210   0.95
+  C04      City                 222         215   0.97
+  E16      Intercity            171         156   0.91
+  E22      Intercity            172         157   0.92
+  F12      Feeder               186         173   0.93
+  F18      Feeder               185         172   0.93
+  F25      Feeder               185         169   0.91
+  X11      Express              244         224   0.92
+  X28      Express              238         227   0.95
+  X66      Express              239         222   0.93
+
+======================================================================
+SECTION G: ROUTE LOAD PROFILE (Cumulative Boarding Pattern)
+======================================================================
+
+  Shows board/alight pattern along the route to find where buses fill up
+
+  Route C01 (City) - Peak onboard: 99 pax at stop #15 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    123    115       8 Coastal_Marina            ##
+     2    123    116      16 Coastal_Marina            ####
+     3    121    115      22 Coastal_Marina            ######
+     4    123    118      27 Coastal_Marina            ########
+     5    107    103      30 CBD_Downtown              #########
+     6    111     99      42 CBD_Downtown              ############
+     7    105     98      50 CBD_Downtown              ##############
+     8    112    103      58 Core_Deira                #################
+     9    113    107      64 Core_Deira                ###################
+    10    109    100      73 CBD_BusinessBay           ######################
+    11    118    101      90 Res_AlQusais              ###########################
+    12    109    102      96 CBD_Downtown              #############################
+    13    107    107      97 Ind_JebelAli              #############################
+    14    109    110      96 Res_InternationalCity     ############################
+    15    106    102      99 CBD_Downtown              ##############################
+
+  Route C02 (City) - Peak onboard: 66 pax at stop #13 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    113    108       5 Core_Deira                ##
+     2    108    105       8 Core_Deira                ###
+     3    111    108      11 Core_Deira                ####
+     4    108    105      13 Core_Deira                ######
+     5    112    103      22 CBD_Downtown              ##########
+     6    110    105      27 CBD_Downtown              ############
+     7    109     98      37 CBD_Downtown              #################
+     8    114    107      45 Core_Deira                ####################
+     9    106    106      45 Ind_JebelAli              ####################
+    10    110    105      51 Res_AlQusais              #######################
+    11    113    105      59 Core_Deira                ##########################
+    12    110    105      65 Res_AlQusais              #############################
+    13    108    107      66 CBD_Downtown              ##############################
+
+  Route C03 (City) - Peak onboard: 96 pax at stop #15 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    123    114      10 Coastal_Marina            ###
+     2    123    116      16 Coastal_Marina            #####
+     3    122    114      23 Coastal_Marina            #######
+     4    118    112      29 Coastal_Marina            #########
+     5    108    101      35 CBD_Downtown              ###########
+     6    108    102      41 CBD_Downtown              ############
+     7    108    101      48 CBD_Downtown              ##############
+     8    111    105      54 Ind_JebelAli              ################
+     9    111    107      58 Res_InternationalCity     ##################
+    10    112    101      68 Core_Deira                #####################
+    11    109    104      73 Ind_JebelAli              ######################
+    12    111     99      85 Core_Deira                ##########################
+    13    107    104      88 CBD_BusinessBay           ###########################
+    14    110    106      92 Res_AlQusais              ############################
+    15    105    101      96 CBD_Downtown              ##############################
+
+  Route X11 (Express) - Peak onboard: 52 pax at stop #10 (Coastal_Marina)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    120    115       6 Res_AlQusais              ###
+     2    121    120       7 Res_AlQusais              ###
+     3    124    118      12 Res_AlQusais              ######
+     4    124    115      20 Core_Deira                ###########
+     5    120    111      29 Core_Deira                ################
+     6    115    115      29 CBD_BusinessBay           ################
+     7    119    114      35 CBD_Downtown              ####################
+     8    120    115      40 Res_InternationalCity     ######################
+     9    116    113      42 CBD_Downtown              ########################
+    10    133    123      52 Coastal_Marina            ##############################
+    11    120    123      49 Core_Deira                ############################
+
+  Route X28 (Express) - Peak onboard: 85 pax at stop #11 (Core_Deira)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    118    111       7 Res_InternationalCity     ##
+     2    121    115      13 Res_InternationalCity     ####
+     3    122    113      22 Res_InternationalCity     #######
+     4    119    114      27 Core_Deira                #########
+     5    124    113      38 Core_Deira                #############
+     6    115    115      38 CBD_Downtown              #############
+     7    123    113      48 Core_Deira                ################
+     8    131    122      57 Coastal_Marina            ###################
+     9    119    112      63 CBD_BusinessBay           ######################
+    10    123    110      76 Res_AlQusais              ##########################
+    11    122    113      85 Core_Deira                ##############################
+
+  Route F12 (Feeder) - Peak onboard: 49 pax at stop #13 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1     95     91       5 Res_InternationalCity     ###
+     2     91     86      10 Res_InternationalCity     #####
+     3     90     90       9 Res_InternationalCity     #####
+     4     94     91      13 Res_InternationalCity     #######
+     5     95     85      22 CBD_Downtown              #############
+     6     92     88      26 CBD_Downtown              ###############
+     7     91     87      30 CBD_Downtown              ##################
+     8     91     89      32 Res_AlQusais              ###################
+     9     93     90      35 Ind_JebelAli              #####################
+    10     92     90      37 Ind_JebelAli              ######################
+    11     92     87      42 CBD_Downtown              #########################
+    12     98     99      41 Coastal_Marina            #########################
+    13     95     87      49 CBD_Downtown              ##############################
+
+  Route F18 (Feeder) - Peak onboard: 91 pax at stop #15 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1     94     91       3 Res_AlQusais              
+     2     90     89       4 Res_AlQusais              #
+     3     92     87       9 Res_AlQusais              ##
+     4    101     85      26 Res_AlQusais              ########
+     5     89     83      31 CBD_Downtown              ##########
+     6     91     82      40 CBD_Downtown              #############
+     7     92     89      44 CBD_Downtown              ##############
+     8    103     94      52 Coastal_Marina            #################
+     9     94     84      62 Res_AlQusais              ####################
+    10     93     88      67 Res_InternationalCity     ######################
+    11     95     89      73 Res_InternationalCity     ########################
+    12     91     90      74 Res_InternationalCity     ########################
+    13     90     89      75 Res_InternationalCity     ########################
+    14     96     86      85 Ind_JebelAli              ###########################
+    15     93     87      91 CBD_Downtown              ##############################
+
+  Route F25 (Feeder) - Peak onboard: 77 pax at stop #14 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1     94     88       6 Res_AlQusais              ##
+     2     94     92       8 Res_AlQusais              ###
+     3     90     92       6 Res_AlQusais              ##
+     4     98     91      12 Res_AlQusais              ####
+     5     89     88      13 CBD_Downtown              #####
+     6     94     89      19 CBD_Downtown              #######
+     7     90     89      20 CBD_Downtown              #######
+     8     97     87      30 CBD_BusinessBay           ###########
+     9     94     85      40 CBD_Downtown              ###############
+    10     90     83      47 CBD_BusinessBay           ##################
+    11     92     87      53 CBD_Downtown              ####################
+    12     95     87      60 Core_Deira                #######################
+    13     90     84      66 CBD_Downtown              #########################
+    14     92     82      77 CBD_Downtown              ##############################
+
+  Route E16 (Intercity) - Peak onboard: 42 pax at stop #11 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1     83     86      -3 Ind_JebelAli              
+     2     88     81       4 Ind_JebelAli              ###
+     3     83     81       7 Ind_JebelAli              ####
+     4     85     81      12 CBD_Downtown              ########
+     5     85     81      16 CBD_Downtown              ###########
+     6     87     78      24 CBD_BusinessBay           #################
+     7     85     83      26 Core_Deira                ##################
+     8     85     81      30 CBD_Downtown              #####################
+     9     83     77      36 CBD_Downtown              ##########################
+    10     89     86      39 Res_InternationalCity     ############################
+    11     84     82      42 CBD_Downtown              ##############################
+
+  Route E22 (Intercity) - Peak onboard: 53 pax at stop #13 (CBD_Downtown)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1     84     81       2 Ind_JebelAli              #
+     2     85     85       2 Ind_JebelAli              #
+     3     85     83       4 Ind_JebelAli              ##
+     4     85     80       9 Ind_JebelAli              #####
+     5     83     79      13 CBD_Downtown              #######
+     6     84     78      19 CBD_Downtown              ##########
+     7     86     80      25 CBD_Downtown              ##############
+     8     90     81      34 Res_InternationalCity     ###################
+     9     87     80      41 CBD_Downtown              ######################
+    10     89     82      48 Ind_JebelAli              ##########################
+    11     86     87      46 Res_AlQusais              ##########################
+    12     86     84      49 Core_Deira                ###########################
+    13     88     84      53 CBD_Downtown              ##############################
+
+  Route C04 (City) - Peak onboard: 47 pax at stop #12 (CBD_BusinessBay)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    121    119       2 Coastal_Marina            #
+     2    119    115       6 Coastal_Marina            ####
+     3    122    119       9 Coastal_Marina            #####
+     4    122    120      11 Coastal_Marina            ######
+     5    105    100      15 CBD_BusinessBay           #########
+     6    107    103      18 CBD_BusinessBay           ###########
+     7    105    108      14 CBD_BusinessBay           #########
+     8    109    104      20 Res_AlQusais              ############
+     9    106    101      25 CBD_BusinessBay           ################
+    10    103    102      26 CBD_Downtown              ################
+    11    116    104      38 Res_InternationalCity     ########################
+    12    108    100      47 CBD_BusinessBay           ##############################
+
+  Route X66 (Express) - Peak onboard: 61 pax at stop #10 (CBD_BusinessBay)
+   Seq   Board  Alight  Onboard Zone                      Bar
+     1    121    114       8 Res_InternationalCity     ###
+     2    119    111      16 Res_InternationalCity     #######
+     3    119    117      18 Res_InternationalCity     #########
+     4    118    108      28 CBD_BusinessBay           #############
+     5    119    110      38 CBD_BusinessBay           ##################
+     6    117    116      39 Res_AlQusais              ###################
+     7    117    116      40 Ind_JebelAli              ###################
+     8    135    127      48 Coastal_Marina            #######################
+     9    117    116      49 Res_AlQusais              ########################
+    10    118    107      61 CBD_BusinessBay           ##############################
+
+======================================================================
+EXECUTIVE SUMMARY: OVERLOAD & WASTE FINDINGS
+======================================================================
+
+  TOP 3 OVERLOADED CORRIDORS:
+    1. Route X28 (Express): Risk=89/100, Pax/km=18.8, Forecast growth=+8.0%
+    2. Route X11 (Express): Risk=68/100, Pax/km=10.3, Forecast growth=+8.4%
+    3. Route X66 (Express): Risk=60/100, Pax/km=12.3, Forecast growth=+7.2%
+
+  TOP 3 UNDERUTILIZED CORRIDORS:
+    1. Route F18 (Feeder): Waste=88/100, Pax/km=10.0, Length=18.1 km
+    2. Route E16 (Intercity): Waste=75/100, Pax/km=7.6, Length=22.1 km
+    3. Route F12 (Feeder): Waste=75/100, Pax/km=6.7, Length=27.0 km
+
+  TOP 5 BOTTLENECK STOPS:
+    1. Stop 33 on Route X66 (Coastal_Marina): 1.12x expected load, 179 pax/dwell-min
+    2. Stop 52 on Route C04 (Coastal_Marina): 1.10x expected load, 142 pax/dwell-min
+    3. Stop 33 on Route C01 (Coastal_Marina): 1.10x expected load, 159 pax/dwell-min
+    4. Stop 31 on Route C04 (Coastal_Marina): 1.09x expected load, 326 pax/dwell-min
+    5. Stop 52 on Route C03 (Coastal_Marina): 1.09x expected load, 124 pax/dwell-min
+
+  ZONE FLOW CLASSIFICATION:
+    CBD_Downtown                   -> GENERATOR (net=+42,239)
+    Res_AlQusais                   -> GENERATOR (net=+20,721)
+    Core_Deira                     -> GENERATOR (net=+22,713)
+    Res_InternationalCity          -> GENERATOR (net=+17,469)
+    Coastal_Marina                 -> GENERATOR (net=+18,164)
+    CBD_BusinessBay                -> GENERATOR (net=+16,955)
+    Ind_JebelAli                   -> GENERATOR (net=+9,172)
+
+======================================================================
+[DONE] CORRIDOR ANALYSIS COMPLETE
+======================================================================

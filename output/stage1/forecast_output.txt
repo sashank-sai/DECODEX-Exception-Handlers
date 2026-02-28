@@ -1,0 +1,117 @@
+======================================================================
+BASELINE FORECAST: Jul 1 - Dec 31, 2025
+======================================================================
+  Loaded: 195,381 rows, 2022-01-01 to 2025-06-30
+
+--- Step 2: Aggregating daily route-level demand ---
+  Daily route records: 15,324
+  Routes: 12
+
+--- Step 3: Decomposing demand components per route ---
+  Route C01 (City      ): trend_slope=+22.8/mo, seasonal_range=[0.84-1.16], cong_elasticity=+106.3
+  Route C02 (City      ): trend_slope=+19.2/mo, seasonal_range=[0.84-1.19], cong_elasticity=+106.6
+  Route C03 (City      ): trend_slope=+22.5/mo, seasonal_range=[0.84-1.16], cong_elasticity=+96.6
+  Route X11 (Express   ): trend_slope=+18.5/mo, seasonal_range=[0.83-1.17], cong_elasticity=+86.5
+  Route X28 (Express   ): trend_slope=+18.0/mo, seasonal_range=[0.85-1.16], cong_elasticity=+91.7
+  Route F12 (Feeder    ): trend_slope=+16.4/mo, seasonal_range=[0.84-1.18], cong_elasticity=+91.6
+  Route F18 (Feeder    ): trend_slope=+18.5/mo, seasonal_range=[0.84-1.17], cong_elasticity=+96.4
+  Route F25 (Feeder    ): trend_slope=+17.1/mo, seasonal_range=[0.85-1.18], cong_elasticity=+105.0
+  Route E16 (Intercity ): trend_slope=+12.9/mo, seasonal_range=[0.84-1.18], cong_elasticity=+78.5
+  Route E22 (Intercity ): trend_slope=+15.3/mo, seasonal_range=[0.84-1.16], cong_elasticity=+82.9
+  Route C04 (City      ): trend_slope=+18.1/mo, seasonal_range=[0.84-1.17], cong_elasticity=+77.9
+  Route X66 (Express   ): trend_slope=+16.3/mo, seasonal_range=[0.84-1.17], cong_elasticity=+74.1
+
+--- Step 4: Assembling forecast dataset ---
+  Forecast records: 2,208
+  Date range: 2025-07-01 to 2025-12-31
+  Routes covered: 12
+
+======================================================================
+FORECAST SUMMARY
+======================================================================
+
+  Total forecast demand (Jul-Dec 2025): 5,500,596 pax
+  Same period 2024 (actual):            5,116,013 pax
+  Implied growth rate:                  +7.5%
+
+  H1 2025 actual:                       5,642,137 pax
+  H2 2025 forecast:                     5,500,596 pax
+  Full year 2025 projection:            11,142,733 pax
+  vs 2024 (10,322,553): +7.9%
+
+--- Monthly Forecast Breakdown ---
+  Jul 2025: Total=   809,820  Daily_Avg=   2,177
+  Aug 2025: Total=   802,148  Daily_Avg=   2,156
+  Sep 2025: Total=   889,271  Daily_Avg=   2,470
+  Oct 2025: Total=   923,671  Daily_Avg=   2,483
+  Nov 2025: Total=   984,154  Daily_Avg=   2,734
+  Dec 2025: Total= 1,091,532  Daily_Avg=   2,934
+
+--- Route-Level Forecast (H2 2025) ---
+  C01 (City      ): Total=   582,000  Daily_Avg=  3,163
+  C03 (City      ): Total=   579,786  Daily_Avg=  3,151
+  C02 (City      ): Total=   489,076  Daily_Avg=  2,658
+  F18 (Feeder    ): Total=   482,436  Daily_Avg=  2,622
+  C04 (City      ): Total=   466,346  Daily_Avg=  2,534
+  X11 (Express   ): Total=   457,485  Daily_Avg=  2,486
+  X28 (Express   ): Total=   457,292  Daily_Avg=  2,485
+  F25 (Feeder    ): Total=   445,637  Daily_Avg=  2,422
+  F12 (Feeder    ): Total=   420,208  Daily_Avg=  2,284
+  X66 (Express   ): Total=   414,953  Daily_Avg=  2,255
+  E22 (Intercity ): Total=   382,693  Daily_Avg=  2,080
+  E16 (Intercity ): Total=   322,684  Daily_Avg=  1,754
+
+--- Seasonal Forecast Split ---
+  Shoulder            : Total= 1,812,942  Daily_Avg=  2,477
+  Summer_Moderate     : Total= 1,611,968  Daily_Avg=  2,167
+  Winter_Peak         : Total= 2,075,686  Daily_Avg=  2,836
+
+--- Weekday vs Weekend Forecast ---
+  Weekday   : Total= 4,027,721  Daily_Avg=  2,543
+  Weekend   : Total= 1,472,875  Daily_Avg=  2,360
+
+--- Route Type Forecast vs Historical ---
+  City        : Hist_Daily_Avg=  2,678  Fcast_Daily_Avg=  2,877  Change=+7.4%
+  Express     : Hist_Daily_Avg=  2,233  Fcast_Daily_Avg=  2,409  Change=+7.9%
+  Feeder      : Hist_Daily_Avg=  2,278  Fcast_Daily_Avg=  2,443  Change=+7.2%
+  Intercity   : Hist_Daily_Avg=  1,780  Fcast_Daily_Avg=  1,917  Change=+7.7%
+
+--- Top 10 Peak Demand Days (Forecast) ---
+  2025-12-01 (Mon):   37,276
+  2025-12-15 (Mon):   37,276
+  2025-12-08 (Mon):   37,276
+  2025-12-22 (Mon):   37,276
+  2025-12-29 (Mon):   37,276
+  2025-12-25 (Thu):   37,270
+  2025-12-11 (Thu):   37,270
+  2025-12-04 (Thu):   37,270
+  2025-12-18 (Thu):   37,270
+  2025-12-12 (Fri):   37,241
+
+======================================================================
+CAPACITY RISK FLAGS
+======================================================================
+
+Routes exceeding historical 95th percentile demand:
+  C01 (City      ):  43 days above P95 (23%), P95=3,670, Max_Forecast=3,930, Overshoot=+7.1%
+  C02 (City      ):  23 days above P95 (12%), P95=3,165, Max_Forecast=3,317, Overshoot=+4.8%
+  C03 (City      ):  43 days above P95 (23%), P95=3,608, Max_Forecast=3,885, Overshoot=+7.7%
+  X11 (Express   ):  39 days above P95 (21%), P95=2,935, Max_Forecast=3,137, Overshoot=+6.9%
+  X28 (Express   ):  43 days above P95 (23%), P95=2,912, Max_Forecast=3,087, Overshoot=+6.0%
+  F12 (Feeder    ):  31 days above P95 (17%), P95=2,701, Max_Forecast=2,890, Overshoot=+7.0%
+  F18 (Feeder    ):  39 days above P95 (21%), P95=3,091, Max_Forecast=3,244, Overshoot=+5.0%
+  F25 (Feeder    ):  43 days above P95 (23%), P95=2,905, Max_Forecast=3,064, Overshoot=+5.5%
+  E16 (Intercity ):  23 days above P95 (12%), P95=2,124, Max_Forecast=2,245, Overshoot=+5.7%
+  E22 (Intercity ):  43 days above P95 (23%), P95=2,465, Max_Forecast=2,614, Overshoot=+6.0%
+  C04 (City      ):  23 days above P95 (12%), P95=2,957, Max_Forecast=3,145, Overshoot=+6.4%
+  X66 (Express   ):  39 days above P95 (21%), P95=2,655, Max_Forecast=2,840, Overshoot=+7.0%
+
+======================================================================
+SAVING FORECAST
+======================================================================
+  Saved to: c:\Users\asus\Desktop\decodex/forecast_h2_2025.csv
+  Shape: (2208, 13)
+
+======================================================================
+[DONE] BASELINE FORECAST COMPLETE
+======================================================================

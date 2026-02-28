@@ -1,0 +1,186 @@
+======================================================================
+SHOCK ADAPTATION MODEL
+Demo: New Metro Line Impact on Bus Network
+======================================================================
+
+  Baseline forecast: 2,208 records
+  Baseline total H2 2025: 5,500,596 pax
+
+======================================================================
+SHOCK CONFIGURATION
+======================================================================
+
+  Shock: New Metro Line (Blue Line Extension)
+  Description: New metro line opens through Downtown, Marina, and BusinessBay zones
+  Effective: 2025-09-01
+  Ramp-up: 2 months to full impact
+
+  Zone impacts:
+    CBD_Downtown                  : -20%
+    Coastal_Marina                : -15%
+    CBD_BusinessBay               : -18%
+    Core_Deira                    : -5%
+    Res_AlQusais                  : +0%
+    Res_InternationalCity         : +0%
+    Ind_JebelAli                  : +0%
+
+======================================================================
+ROUTE-LEVEL SHOCK MULTIPLIERS
+======================================================================
+  Route C01 (City      ): shock=-14.0%, multiplier=0.860, stops=15
+  Route C02 (City      ): shock=-9.8%, multiplier=0.902, stops=13
+  Route C03 (City      ): shock=-11.3%, multiplier=0.887, stops=15
+  Route X11 (Express   ): shock=-6.3%, multiplier=0.937, stops=11
+  Route X28 (Express   ): shock=-4.6%, multiplier=0.954, stops=11
+  Route F12 (Feeder    ): shock=-12.6%, multiplier=0.874, stops=13
+  Route F18 (Feeder    ): shock=-8.1%, multiplier=0.919, stops=15
+  Route F25 (Feeder    ): shock=-16.9%, multiplier=0.831, stops=14
+  Route E16 (Intercity ): shock=-6.6%, multiplier=0.934, stops=11
+  Route E22 (Intercity ): shock=-4.3%, multiplier=0.957, stops=13
+  Route C04 (City      ): shock=-15.2%, multiplier=0.848, stops=12
+  Route X66 (Express   ): shock=-5.5%, multiplier=0.945, stops=10
+
+======================================================================
+APPLYING SHOCK TO FORECAST
+======================================================================
+
+======================================================================
+BASELINE vs SHOCKED FORECAST COMPARISON
+======================================================================
+
+  Baseline H2 2025:     5,500,596 pax
+  Shocked H2 2025:      5,249,763 pax
+  Net change:            -250,833 pax (-4.6%)
+
+--- Monthly Comparison ---
+  Month          Baseline      Shocked      Delta   Change
+  -------------------------------------------------------
+  Jul            809,820     809,820        +0   +0.0%
+  Aug            802,148     802,148        +0   +0.0%
+  Sep            889,271     889,271        +0   +0.0%
+  Oct            923,671     878,027   -45,644   -4.9%
+  Nov            984,154     886,924   -97,230   -9.9%
+  Dec          1,091,532     983,573  -107,959   -9.9%
+
+--- Route-Level Comparison ---
+  Route    Type           Baseline    Shocked      Delta   Change
+  --------------------------------------------------------------
+  C01      City           582,000   544,341   -37,659   -6.5%
+  C02      City           489,076   467,085   -21,991   -4.5%
+  C03      City           579,786   549,486   -30,300   -5.2%
+  C04      City           466,346   433,542   -32,804   -7.0%
+  E16      Intercity      322,684   312,852    -9,832   -3.0%
+  E22      Intercity      382,693   375,166    -7,527   -2.0%
+  F12      Feeder         420,208   395,678   -24,530   -5.8%
+  F18      Feeder         482,436   464,571   -17,865   -3.7%
+  F25      Feeder         445,637   411,110   -34,527   -7.7%
+  X11      Express        457,485   444,078   -13,407   -2.9%
+  X28      Express        457,292   447,514    -9,778   -2.1%
+  X66      Express        414,953   404,340   -10,613   -2.6%
+
+======================================================================
+REVISED FLEET ALLOCATION (POST-SHOCK)
+======================================================================
+
+  Route    Type          Shkd_Pax  Base_Flt  New_Flt  Delta  Headway
+  -----------------------------------------------------------------
+  C03      City            3,114        8       8    +0    15.0m
+  C01      City            3,066        8       8    +0    15.0m
+  C02      City            2,646        5       5    +0    20.0m
+  F18      Feeder          2,645        8       8    +0    20.0m
+  X28      Express         2,562        7       7    +0    20.0m
+  X11      Express         2,549        5       5    +0    20.0m
+  C04      City            2,439        7       7    +0    20.0m
+  X66      Express         2,319        8       8    +0    20.0m
+  F25      Feeder          2,296        7       7    +0    20.0m
+  F12      Feeder          2,236        7       7    +0    20.0m
+  E22      Intercity       2,156        6       6    +0    20.0m
+  E16      Intercity       1,791        5       5    +0    30.0m
+
+  Baseline total fleet: 81
+  Post-shock fleet:    81
+  Buses freed up:      0
+
+======================================================================
+STRATEGIC RECOMMENDATIONS (POST-SHOCK)
+======================================================================
+
+  FINDING: The new metro line reduces bus demand by 4.6%, 
+  freeing up approximately 0 buses from the current fleet.
+
+  RECOMMENDATION 1: REDEPLOY FREED BUSES
+  ----------------------------------------
+  Use the 0 freed buses to increase frequency on routes NOT
+  affected by the metro line (Res_AlQusais, Res_InternationalCity, Ind_JebelAli).
+  This improves service in underserved areas at zero additional cost.
+
+  RECOMMENDATION 2: ADJUST FEEDER ROLE
+  --------------------------------------
+  Routes through CBD_Downtown and Coastal_Marina should pivot from 
+  "primary transport" to "metro feeder" service:
+    - Shorten routes to terminate at metro stations
+    - Increase frequency for last-mile connectivity
+    - Coordinate timetables with metro schedules
+
+  RECOMMENDATION 3: MONITOR RAMP-UP
+  -----------------------------------
+  Metro ridership won't reach steady state for 2 months.
+  During transition:
+    - Maintain 80% of current bus capacity for first month
+    - Reduce gradually based on observed metro adoption
+    - Track daily bus ridership at Metro_Link stops as leading indicator
+
+  RECOMMENDATION 4: EXPLOIT COST SAVINGS
+  ----------------------------------------
+  Freed buses = reduced fuel, driver hours, and maintenance.
+  Estimated savings: 0 buses x ~AED 500K/year = AED 0K annually.
+  Reinvest in: metro-bus integration facilities, real-time info systems.
+
+======================================================================
+MODEL EXTENSIBILITY: ADDING FUTURE CONSTRAINTS
+======================================================================
+
+  This model can absorb ANY structural shock by modifying SHOCK_CONFIG:
+
+  EXAMPLE 1: Budget Cut
+  ---------------------
+  SHOCK_CONFIG['budget_constraint'] = {
+      'max_fleet': 60,          # Reduce fleet from 81 to 60
+      'priority_routes': ['X28', 'C01', 'C03'],  # Protect these routes
+  }
+
+  EXAMPLE 2: New Route Added
+  --------------------------
+  SHOCK_CONFIG['new_routes'] = [{
+      'route_code': 'M01', 'type': 'Metro_Feeder',
+      'zones': ['CBD_Downtown', 'Coastal_Marina'],
+      'fleet_allocation': 5,    # 5 buses from freed pool
+  }]
+
+  EXAMPLE 3: Demand Spike (Event/Tourism)
+  ----------------------------------------
+  SHOCK_CONFIG['zone_impact'] = {
+      'Coastal_Marina': +0.30,  # 30% INCREASE for event
+      'CBD_Downtown': +0.20,    # 20% increase
+  }
+
+  EXAMPLE 4: Road Closure / Infrastructure Change
+  ------------------------------------------------
+  SHOCK_CONFIG['route_type_sensitivity'] = {
+      'Express': 0.0,           # Express routes unaffected
+      'City': 1.5,              # City routes MORE affected
+  }
+
+  Simply update the SHOCK_CONFIG dictionary and re-run the script.
+  The model automatically recalculates all downstream metrics.
+
+======================================================================
+SAVING OUTPUTS
+======================================================================
+  Shocked forecast saved to: c:\Users\asus\Desktop\decodex/forecast_h2_2025_shocked.csv
+  Shape: (2208, 17)
+  Columns: ['Date', 'Route_ID', 'Route_Code', 'Route_Type', 'Forecast_Total_Pax', 'Trend_Component', 'Seasonal_Multiplier', 'DOW_Multiplier', 'Expected_Congestion', 'Month', 'DayOfWeek', 'IsWeekend', 'Season', 'Shock_Applied', 'Baseline_Pax', 'Shock_Delta', 'Shock_Pct']
+
+======================================================================
+[DONE] SHOCK ADAPTATION MODEL COMPLETE
+======================================================================
