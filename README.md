@@ -56,15 +56,6 @@ decodex/
 │   ├── stage2/                   # Shock analysis report
 │   └── stage3/                   # Accountability audit report
 │
-├── docs/                         # Documentation & guidelines
-│   ├── guidelines/               # Hackathon rules & case study PDFs
-│   └── analysis/                 # Chart analysis document
-│
-├── submission/                   # Final deliverables
-│   ├── DECODEX_2026_Submission.docx
-│   ├── DECODEX_2026_Submission_v2.docx
-│   └── Stage2_Recalibration_Brief.pptx
-│
 └── README.md
 ```
 
