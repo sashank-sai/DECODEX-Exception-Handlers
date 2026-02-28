@@ -93,8 +93,6 @@ decodex/
 | **pandas** | Data manipulation & aggregation |
 | **numpy** | Statistical computation |
 | **matplotlib / seaborn** | All 26 visualizations |
-| **python-docx** | Word document generation |
-| **python-pptx** | PowerPoint brief generation |
 
 ---
 
